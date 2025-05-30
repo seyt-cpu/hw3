@@ -1,0 +1,41 @@
+@everyone here’s your next hw! It’ll be due by our clas Friday fam. You’ll be building out your first API! WOOOOOOO
+Drop some robot emojis on this when you’ve seen it
+:eyes:
+READ THIS MESSAGE /  TUTORIAL BEFORE YOU GO
+https://blog.logrocket.com/crud-rest-api-node-js-express-postgresql/
+You’ll follow the guide to learn more about POSTGRES and setting up a SQL based db, but when you get to the Setting up an Express server READ THIS:
+In order to hide sensitive data on github we’re going to need to hide them from git. To do this we’ll need to use a .gitignore file and a .env file in your project folder to hold our data.
+(this is a common process we do on the backend)
+You always need a folder for your server. In the tutorial they ask you to build a folder called node-api-postgres, but you can create a new folder named whatever you like that will hold your package.json, your .env file and your files for your express server.
+(remember to create a package.json file easily you can run npm init -y in the terminal for your folder on VSCode)
+To use an .env file in a Node.js Express application, you first need to install the dotenv npm package. After you add a package.json to your folder you can install the dotenv package by using npm install dotenv --save in the folder you create to hold your server.
+After installing dotenv, you should create a file named  .env file to your folder and add your sensitive environment variables in the format NAME=VALUE. For example:
+DB_NAME=api
+DB_USERNAME=me
+DB_HOST=localhost
+DB_PASSWORD=password
+DB_PORT=5432
+To load these variables into your application, you need to require and configure dotenv at the top of your entry file. This can be done with the following lines of code added to the top of your queries.js file before you connect your db:
+require('dotenv').config();
+Your queries.js file should look like this:
+require('dotenv').config();
+
+const Pool = require('pg').Pool
+const pool = new Pool({
+  user: process.env.DB_USERNAME,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+})
+
+// and then all the other code you work on in the tutorial 
+It’s important to exclude the .env file from your version control system by adding it to your .gitignore file to avoid committing sensitive information
+Create a new file called .gitignore and add the following lines
+.env
+Once you’ve done this step you’re good to go making commits. Continue the tutorial making commits after each step and once you’re finished push to github and share with me here on Slack!
+---
+We’ll have some time to go over this a bit on Monday but for those excited to keep hacking here’s another awesome project to work on. (edited) 
+LogRocket BlogLogRocket Blog
+CRUD REST API with Node.js, Express, and PostgreSQL - LogRocket Blog
+Learn how to install and set up PostgreSQL in the command line, create users, databases, and tables, and run SQL commands.
